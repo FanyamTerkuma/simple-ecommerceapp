@@ -30,7 +30,7 @@ function Products() {
 							<img
 								className='object-contain h-[24em] w-[20em] '
 								src={product.image}
-								alt={`${product.description}`}
+								alt={`${product.name}`}
 							/>
 							<div className='flex flex-col gap-2 w-full p-1'>
 								<p className='font-light text-2xl uppercase indent-1'>{product.name}</p>
