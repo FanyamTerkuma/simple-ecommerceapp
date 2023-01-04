@@ -5,6 +5,7 @@ import Button from '../components/Button';
 import { TbCurrencyNaira } from 'react-icons/tb';
 import { AiFillPlusCircle } from 'react-icons/ai';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function AdminPage() {
 	const [products, setProducts] = useState([]);
@@ -24,15 +25,18 @@ function AdminPage() {
 	return (
 		<div className='bg-[#f8f9fa] '>
 			<span className='flex justify-end py-2 px-1'>
-				<Button
-					className=' hover:bg-transparent rounded border-green-400 text-green-600'
-					label={
-						<p className='flex items-center justify-center gap-2'>
-							<AiFillPlusCircle fill='#40916c' size={30} />
-							Add New product
-						</p>
-					}
-				/>
+				<Link to='/add'>
+					{' '}
+					<Button
+						className=' hover:bg-transparent rounded border-green-400 text-green-600'
+						label={
+							<p className='flex items-center justify-center gap-2'>
+								<AiFillPlusCircle fill='#40916c' size={30} />
+								Add New product
+							</p>
+						}
+					/>
+				</Link>
 			</span>
 
 			<div className=' container mx-auto flex justify-center'>
