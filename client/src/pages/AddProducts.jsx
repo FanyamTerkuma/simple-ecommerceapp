@@ -19,8 +19,8 @@ function AddProducts() {
 			formData.append('description', description);
 			formData.append('price', price);
 			formData.append('file', file);
-			const res = await axios.post('http://localhost:3001/products', formData);
-			console.log(res.data);
+			await axios.post('http://localhost:3001/products', formData);
+			window.alert('Product added successfully');
 			navigate('/admin');
 		} catch (error) {
 			console.log(error);
@@ -32,7 +32,7 @@ function AddProducts() {
 	};
 
 	return (
-		<div className='h-[100vh] flex justify-center pt-6  bg-[#f8f9fa]'>
+		<div className='h-[100vh] flex justify-center pt-6  px-2 bg-[#f8f9fa]'>
 			<div className=' sm:w-1/2 w-auto max-w-full'>
 				<form className='flex flex-col gap-3 bg-[#fffefe] p-2 rounded shadow-lg'>
 					<h1 className='font-semibold text-2xl text-center'>Add a New Product</h1>
@@ -40,27 +40,27 @@ function AddProducts() {
 						label='Product name'
 						id='name'
 						type='text'
-						placeholder='name'
+						placeholder='Enter product name'
 						name='name'
 						onChange={(e) => {
 							SetName(e.target.value);
 						}}
 					/>
-					<Input
-						label='Product description'
+					<label htmlFor='description'>Description</label>
+					<textarea
 						id='description'
-						type='text'
-						placeholder='description'
+						className='w-auto resize-none indent-1 p-1 rounded shadow-inner border border-slate-100 focus:outline-none'
+						rows={8}
 						name='description'
+						placeholder='Write product description'
 						onChange={(e) => {
 							setDescription(e.target.value);
-						}}
-					/>
+						}}></textarea>
 					<Input
 						label='Product price'
 						id='price'
 						type='number'
-						placeholder='price'
+						placeholder='Enter price'
 						min={0}
 						name='price'
 						onChange={(e) => {

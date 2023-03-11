@@ -45,7 +45,28 @@ app.post('/products', upload.single('file'), (req, res) => {
 		return res.json(data);
 	});
 });
+app.delete('/products/:id', (req, res) => {
+	const productId = req.params.id;
+	const query = 'DELETE FROM  products WHERE productid =?';
+	db.query(query, [productId], (err, data) => {
+		if (err) return res.json(err);
+		return res.json(data);
+	});
+});
+app.put('/products/:id', upload.single('file'), (req, res) => {
+	const productId = req.params.id;
+	const name = req.body.name;
+	const description = req.body.description;
+	const price = req.body.price;
+	const image = 'http://localhost:3001/products/' + req.file.filename;
 
+	const query = 'UPDATE products SET name = ?,description = ?, price = ?,image = ? WHERE productid = ?';
+
+	db.query(query, [name, description, price, image, productId], (err, data) => {
+		if (err) return res.json(err);
+		return res.json(data);
+	});
+});
 app.listen(3001, () => {
 	console.log('connection successful');
 });
